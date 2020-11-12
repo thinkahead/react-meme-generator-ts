@@ -1,0 +1,25 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: meme-generator
+  name: meme-generator
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: meme-generator
+  template:
+    metadata:
+      labels:
+        app: meme-generator
+    spec:
+      containers:
+      - image: image-registry.openshift-image-registry.svc:5000/tekton-demo/meme-generator:latest
+        imagePullPolicy: Always
+        name: meme-generator
+        ports:
+        - containerPort: 8080
+          protocol: TCP
+      

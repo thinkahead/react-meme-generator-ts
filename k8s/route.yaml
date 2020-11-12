@@ -1,0 +1,14 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  labels:
+    app: meme-generator
+  name: meme-generator
+spec:
+  port:
+    targetPort: 8080
+  to:
+    kind: Service
+    name: meme-generator
+    weight: 100

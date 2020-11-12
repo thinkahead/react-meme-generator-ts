@@ -1,0 +1,21 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  name: build-and-deploy-run
+spec:
+  pipelineRef:
+    name: build-and-deploy
+  params:
+  - name: repository
+    value: https://github.com/sm43/react-meme-generator-ts
+  - name: image
+    value: image-registry.openshift-image-registry.svc:5000/default/meme-generator:latest
+  - name: manifest-dir
+    value: k8s
+  - name: deployment-name
+    value: meme-generator
+  workspaces:
+  - name: shared-workspace
+    persistentvolumeclaim:
+      claimName: repo-source-pvc
