@@ -15,7 +15,7 @@
 
 #Multi Stage Dockerfile
 
-FROM node:12-alpine as builder
+FROM ppc64le/node:12-alpine as builder
 WORKDIR /app
 COPY package-lock.json package.json /app/
 RUN npm install
@@ -24,7 +24,7 @@ COPY public /app/public/
 COPY src /app/src/
 RUN npm run build
 
-FROM nginxinc/nginx-unprivileged
+FROM nginxinc/nginx-unprivileged:stable-ppc64le
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=builder /app/build /usr/share/nginx/html
 EXPOSE 8080
