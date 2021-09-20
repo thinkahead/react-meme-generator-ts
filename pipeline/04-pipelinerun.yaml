@@ -8,7 +8,7 @@ spec:
     name: build-and-deploy
   params:
   - name: repository
-    value: https://github.com/sm43/react-meme-generator-ts
+    value: https://github.com/thinkahead/react-meme-generator-ts
   - name: image
     value: image-registry.openshift-image-registry.svc:5000/default/meme-generator:latest
   - name: manifest-dir

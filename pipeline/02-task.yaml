@@ -18,7 +18,7 @@ spec:
   - name: source
   steps:
   - name: apply
-    image: quay.io/openshift/origin-cli:latest
+    image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
     workingdir: $(workspaces.source.path)
     command: ["/bin/bash", "-c"]
     args:
@@ -27,7 +27,7 @@ spec:
       oc apply -f $(params.manifest-dir)
       echo -----------------------------------
   - name: patch
-    image: quay.io/openshift/origin-cli:latest
+    image: image-registry.openshift-image-registry.svc:5000/openshift/cli:latest
     command: ["/bin/bash", "-c"]
     args:
     - |-
